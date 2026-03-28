@@ -31,7 +31,18 @@ function showViewer(title, url) {
   homeView.classList.remove("active");
   viewerView.classList.add("active");
 
+  if (title === "PFIAP") {
+  viewerTitle.textContent = "PFIAP - FIAP Portfolio and levels";
+} else if (title === "MFIAP") {
+  viewerTitle.textContent = "MFIAP - Master FIAP and levels";
+} else if (title === "FIAP World Cup") {
+  viewerTitle.textContent = "FIAP World Cups for Clubs";
+} else if (title === "FIAP Distinctions") {
+  viewerTitle.textContent = "FIAP Distinctions and levels";
+} else {
   viewerTitle.textContent = title;
+}
+  
   openExternal.href = url;
   openExternalNotice.href = url;
 
