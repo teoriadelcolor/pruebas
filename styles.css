@@ -40,6 +40,10 @@ body > * {
 }
 
 .view.active {
+  display: block;
+}
+
+#viewerView.active {
   display: flex;
   flex-direction: column;
 }
