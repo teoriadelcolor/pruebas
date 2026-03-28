@@ -8,7 +8,6 @@ const iframeNotice = document.getElementById("iframeNotice");
 const loadingOverlay = document.getElementById("loadingOverlay");
 const cards = document.querySelectorAll(".card");
 
-let iframeLoaded = false;
 let iframeTimeout = null;
 
 function isMobileDevice() {
@@ -23,15 +22,18 @@ function getViewerLabel(title) {
   return title;
 }
 
-function showHome() {
+function resetViewer() {
+  clearTimeout(iframeTimeout);
   viewerFrame.src = "about:blank";
+  viewerFrame.classList.remove("is-visible");
   iframeNotice.classList.add("hidden");
   loadingOverlay.classList.add("hidden");
-  iframeLoaded = false;
+}
 
+function showHome() {
+  resetViewer();
   viewerView.classList.remove("active");
   homeView.classList.add("active");
-
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -42,19 +44,21 @@ function showDesktopViewer(title, url) {
   viewerTitle.textContent = getViewerLabel(title);
   openExternalNotice.href = url;
 
+  viewerFrame.classList.remove("is-visible");
   iframeNotice.classList.add("hidden");
   loadingOverlay.classList.remove("hidden");
-  iframeLoaded = false;
 
-  viewerFrame.src = url;
+  // Espera un instante antes de asignar src para que el overlay pinte primero
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      viewerFrame.src = url;
+    });
+  });
 
-  clearTimeout(iframeTimeout);
   iframeTimeout = setTimeout(() => {
-    if (!iframeLoaded) {
-      loadingOverlay.classList.add("hidden");
-      iframeNotice.classList.remove("hidden");
-    }
-  }, 3500);
+    loadingOverlay.classList.add("hidden");
+    iframeNotice.classList.remove("hidden");
+  }, 6000);
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -71,13 +75,10 @@ cards.forEach((card) => {
     }
 
     if (isMobileDevice()) {
-  event.preventDefault();
-
-  // 🔥 Fuerza abrir en la MISMA pestaña
-  window.location.href = url;
-
-  return;
-}
+      event.preventDefault();
+      window.location.assign(url);
+      return;
+    }
 
     event.preventDefault();
     showDesktopViewer(title, url);
@@ -87,7 +88,8 @@ cards.forEach((card) => {
 backButton.addEventListener("click", showHome);
 
 viewerFrame.addEventListener("load", () => {
-  iframeLoaded = true;
-  loadingOverlay.classList.add("hidden");
+  clearTimeout(iframeTimeout);
   iframeNotice.classList.add("hidden");
+  loadingOverlay.classList.add("hidden");
+  viewerFrame.classList.add("is-visible");
 });
