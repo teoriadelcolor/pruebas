@@ -185,8 +185,8 @@ body > * {
 }
 
 #viewerFrame {
-  width: 100%;
-  height: calc(100vh - 96px);
+ width: 100%;
+  height: 100%;
   border: 0;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.85);
