@@ -302,3 +302,20 @@ body > * {
   text-align: center;
   margin: 0;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  height: 20px; /* ligeramente más de 15px para que se lea bien */
+  background-color: #1d4ed8; /* azul FIAP */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 11px;
+  color: white;
+}
