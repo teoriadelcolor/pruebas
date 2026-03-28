@@ -250,3 +250,7 @@ body > * {
 .hidden-link {
   display: none;
 }
+.fiap-logo {
+  height: 10px;
+  width: auto;
+}
