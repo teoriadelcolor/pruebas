@@ -23,6 +23,11 @@ function showHome() {
 }
 
 function showViewer(title, url) {
+  if (!url || url === "#") {
+    alert("This section does not have a public link yet.");
+    return;
+  }
+
   homeView.classList.remove("active");
   viewerView.classList.add("active");
 
