@@ -34,7 +34,7 @@ function showViewer(title, url) {
   if (title === "PFIAP") {
   viewerTitle.textContent = "PFIAP - FIAP Portfolio and levels";
 } else if (title === "MFIAP") {
-  viewerTitle.textContent = "MFIAP - Master FIAP and levels";
+  viewerTitle.textContent = "MFIAP - Master FIAP";
 } else if (title === "FIAP World Cup") {
   viewerTitle.textContent = "FIAP World Cups for Clubs";
 } else if (title === "FIAP Distinctions") {
