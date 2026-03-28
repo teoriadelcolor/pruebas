@@ -70,12 +70,10 @@ cards.forEach((card) => {
       return;
     }
 
-    // En móvil: dejamos que el navegador siga el enlace normal.
     if (isMobileDevice()) {
       return;
     }
 
-    // En escritorio: interceptamos y usamos iframe.
     event.preventDefault();
     showDesktopViewer(title, url);
   });
