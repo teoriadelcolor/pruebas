@@ -254,3 +254,8 @@ body > * {
   height: 35px;
   width: auto;
 }
+#viewerTitle {
+  text-align: center;
+  color: #1d4ed8; /* mismo azul que FIAP */
+  width: 100%;
+}
