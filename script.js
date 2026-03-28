@@ -59,25 +59,25 @@ function showDesktopViewer(title, url) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function openSection(title, url) {
-  if (!url || url === "#") {
-    alert("This section does not have a public link yet.");
-    return;
-  }
-
-  if (isMobileDevice()) {
-    window.location.href = url;
-    return;
-  }
-
-  showDesktopViewer(title, url);
-}
-
 cards.forEach((card) => {
-  card.addEventListener("click", () => {
+  card.addEventListener("click", (event) => {
     const title = card.dataset.title;
-    const url = card.dataset.url;
-    openSection(title, url);
+    const url = card.getAttribute("href");
+
+    if (!url || url === "#") {
+      event.preventDefault();
+      alert("This section does not have a public link yet.");
+      return;
+    }
+
+    // En móvil: dejamos que el navegador siga el enlace normal.
+    if (isMobileDevice()) {
+      return;
+    }
+
+    // En escritorio: interceptamos y usamos iframe.
+    event.preventDefault();
+    showDesktopViewer(title, url);
   });
 });
 
