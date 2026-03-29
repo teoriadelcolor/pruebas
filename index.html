@@ -7,12 +7,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- HOME -->
   <section id="homeView" class="view active">
     <div class="container">
       <header class="hero">
-        <h1>FIAP</h1>
+        <img src="FIAP_Logo.png" alt="FIAP Logo" class="hero-logo" />
+        <h1>FIAP Cloud Collections Service</h1>
         <p>The International Federation of Photographic Art</p>
       </header>
 
@@ -21,6 +20,7 @@
           class="card"
           href="https://fiapnas.quickconnect.to/d/s/17Mcit12P6iqBfOBLh99WetIhDxhgzNj/KJ3xZYfwgBBQaHG1ltzq9NlA4uSdtDK8-urRAXc_-Bw0"
           data-title="PFIAP"
+          data-description="FIAP Portfolio and levels"
         >
           <h2>PFIAP</h2>
           <p>FIAP Portfolio</p>
@@ -30,24 +30,27 @@
           class="card"
           href="https://fiapnas.quickconnect.to/d/s/17Z9eEGu1Ka0PEBG6yRLJdtAqjiGzIoO/40B0qEW8vFrcBGUnErltRAxOVJYyXJXz-D7ygXjC4EQ0"
           data-title="MFIAP"
+          data-description="Master FIAP"
         >
           <h2>MFIAP</h2>
           <p>Master FIAP</p>
         </a>
 
         <a
-          class="card"
+          class="card disabled"
           href="#"
           data-title="FIAP Distinctions"
+          data-description="FIAP Distinctions and levels"
         >
           <h2>FIAP Distinctions</h2>
-          <p>NFIAP AFIAP EFIAP</p>
+          <p>NFIAP · AFIAP · EFIAP</p>
         </a>
 
         <a
           class="card"
           href="https://fiapnas.quickconnect.to/d/s/17ZBobEHIBeALmacqmc10EG4LdFqJ8v5/lqNYD-lFbn_ew3pvsyMHk7YkgXQ_-9Ov-br3AWgu-EQ0"
           data-title="FIAP Biennials"
+          data-description="International Biennials"
         >
           <h2>FIAP Biennials</h2>
           <p>Biennials</p>
@@ -57,6 +60,7 @@
           class="card"
           href="https://fiapnas.quickconnect.to/d/s/17ZBx755GbgCrGob2A0CorJvVhvHvIFg/VHcAxC_4EAg0y9QWSMvbNl5WkAnvgTEU-sbJgVk--EQ0"
           data-title="FIAP World Cup"
+          data-description="World Cups for Clubs"
         >
           <h2>FIAP World Cup</h2>
           <p>for Clubs</p>
@@ -65,54 +69,17 @@
     </div>
   </section>
 
-  <!-- VIEWER DESKTOP -->
-  <section id="viewerView" class="view">
-    <div class="viewer-shell">
-      <header class="viewer-header">
-        <div class="viewer-left">
-          <button id="backButton" class="top-btn" type="button">← Back to menu</button>
-        </div>
-
-        <h2 id="viewerTitle">Viewer</h2>
-
-        <div class="viewer-right">
-          <img src="FIAP_Logo.png" alt="FIAP Logo" class="fiap-logo" />
-        </div>
-      </header>
-
-      <div class="viewer-content">
-        <div id="loadingOverlay" class="loading-overlay hidden">
-          <div class="loading-box">
-            <img src="FIAP_Logo.png" alt="FIAP Logo" class="loading-logo" />
-            <div class="spinner"></div>
-            <h3>Loading archive…</h3>
-            <p>Please wait while the FIAP collection is being prepared.</p>
-          </div>
-        </div>
-
-        <div id="iframeNotice" class="iframe-notice hidden">
-          <div class="notice-box">
-            <h3>Embedded view unavailable</h3>
-            <p>This archive cannot be displayed inside this page.</p>
-            <a
-              id="openExternalNotice"
-              class="top-btn primary"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open externally
-            </a>
-          </div>
-        </div>
-
-        <iframe id="viewerFrame" title="FIAP Viewer"></iframe>
-      </div>
+  <div id="transitionOverlay" class="transition-overlay hidden" aria-hidden="true">
+    <div class="transition-card">
+      <img src="FIAP_Logo.png" alt="FIAP Logo" class="transition-logo" />
+      <div class="spinner"></div>
+      <h2 id="transitionTitle">Opening archive…</h2>
+      <p id="transitionText">Please wait while the FIAP collection is being prepared.</p>
     </div>
-  </section>
+  </div>
 
   <footer class="footer">
-    FIAP All right reserved 2026
+    FIAP All rights reserved 2026
   </footer>
 
   <script src="script.js"></script>
